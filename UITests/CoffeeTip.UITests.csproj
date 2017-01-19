@@ -38,12 +38,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\iOS\CoffeeTip.iOS.csproj">
-      <Project>{9E0DF93C-209E-4FEC-804E-BCDEF3FAA34B}</Project>
-      <Name>CoffeeTip.iOS</Name>
-      <ReferenceOutputAssembly>False</ReferenceOutputAssembly>
-      <Private>False</Private>
-    </ProjectReference>
     <ProjectReference Include="..\Droid\CoffeeTip.Droid.csproj">
       <Project>{736B7124-5566-4BC6-A0D9-1B0ACAE6B371}</Project>
       <Name>CoffeeTip.Droid</Name>
