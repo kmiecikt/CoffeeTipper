@@ -19,7 +19,7 @@ public class LaunchTest {
     private static EnhancedAndroidDriver<MobileElement> driver;
 
     @Test
-    public void canLaunchAppTest() throws MalformedURLException {
+    public void simpleTest() throws MalformedURLException {
         DesiredCapabilities capabilities = new DesiredCapabilities();
 
         capabilities.setCapability("platformName", "android");
@@ -31,38 +31,35 @@ public class LaunchTest {
         driver = Factory.createAndroidDriver(url, capabilities);
         driver.label("Launched");
 
-        tapRandomButton();
+        tapRandomButtons();
     }
 
-    private void tapRandomButton() {
+    private void tapRandomButtons() {
         Random rand = new Random();
 
-        List<MobileElement> buttons = driver.findElementsByClassName("android.widget.Button");
+        for (int i=0; i<10; i++) {
+            List<MobileElement> buttons = driver.findElementsByClassName("android.widget.Button");
 
-        if (buttons.size() == 0) {
-            return;
-        }
+            if (buttons.size() == 0) {
+                return;
+            }
 
-        try {
-            MobileElement button = buttons.get(rand.nextInt(buttons.size()));
-            button.click();
-        } catch (Exception ex) {
-            // Fail silently, this is probably due to the number of buttons on the page being reduced between
-            // FindElementsByClassName() and the tap().
-        }
+            try {
+                MobileElement button = buttons.get(rand.nextInt(buttons.size()));
+                button.click();
+            } catch (Exception ex) {
+                // Fail silently, this is probably due to the number of buttons on the page being reduced between
+                // FindElementsByClassName() and the tap().
+            }
 
-        driver.label("Tapped a random button");
+            try {
+                Thread.sleep(3000);  // This should allow any animations to complete in most cases
+            } catch (InterruptedException ex) {
+            }
 
-        try {
-            Thread.sleep(3000);  // This should allow any animations to complete in most cases
-        } catch (InterruptedException ex) {
-        }
-    }
+            String word = i == 0 ? "a" : "another";
 
-    @After
-    public void after() throws Exception {
-        if (driver != null) {
-            driver.resetApp();
+            driver.label("Tapped " + word + " random button");
         }
     }
 }
