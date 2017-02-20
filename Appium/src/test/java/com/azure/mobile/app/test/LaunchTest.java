@@ -18,8 +18,8 @@ public class LaunchTest {
 
     private static EnhancedAndroidDriver<MobileElement> driver;
 
-    @Test
-    public void simpleTest() throws MalformedURLException {
+    @Before
+    public void setUp() throws MalformedURLException {
         DesiredCapabilities capabilities = new DesiredCapabilities();
 
         capabilities.setCapability("platformName", "android");
@@ -29,12 +29,15 @@ public class LaunchTest {
         URL url = new URL("http://localhost:4723/wd/hub");
 
         driver = Factory.createAndroidDriver(url, capabilities);
-        driver.label("Launched");
-
-        tapRandomButtons();
+        driver.label("App has launched");
     }
 
-    private void tapRandomButtons() {
+    @Test
+    public void appLaunchesTest() {
+    }
+
+    //@Test
+    public void tapRandomButtonsTest() {
         Random rand = new Random();
 
         for (int i=0; i<10; i++) {
