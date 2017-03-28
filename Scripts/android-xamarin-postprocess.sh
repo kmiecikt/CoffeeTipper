@@ -11,7 +11,7 @@ files=( $pattern )
 echo "Removing all ABI APKs except the Universal APK…"
 i=0
 
-for file in `ls $pattern | sort`
+for file in `ls $pattern | sort -V`
 do
   if [ $i -gt 0 ]; then
     rm $file
