@@ -14,7 +14,7 @@ i=0
 for file in `ls $pattern`
 do
   if [ $i -gt 0 ]; then
-    rm $FILE
+    rm $file
     echo "  Removed APK $file"
   fi
   i=$((i+1))
